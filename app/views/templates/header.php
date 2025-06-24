@@ -37,6 +37,7 @@
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
           <li><a href="/home">Home</a></li>
           <li><a href="/home/about">About Me</a></li>
+           <li><a href="/reminders">Reminders</a></li>    
           <li><a href="/home/portfolio">Portfolio</a></li>
           
         </ul>
@@ -48,7 +49,7 @@
       <ul class="menu menu-horizontal px-1">
         <li><a href="/home">Home</a></li>
         <li><a href="/home/about">About Me</a></li>
-        <li><a href="/home/reminders">Reminders</a></li>        
+        <li><a href="/reminders">Reminders</a></li>        
         <li><a href="/home/portfolio">Portfolio</a></li>
       </ul>
     </div>
