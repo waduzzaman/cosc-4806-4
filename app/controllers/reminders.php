@@ -8,10 +8,11 @@ class Reminders extends Controller {
   }
   // Create Reminder
 
+  // CREATE
   public function create() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $subject = trim($_POST['subject']);
-      $user_id = $_SESSION['userid']; 
+      $user_id = $_SESSION['userid']; // Assuming login sets this
 
       $R = $this->model('Reminder');
       $R->create_reminder($subject, $user_id);
@@ -19,8 +20,10 @@ class Reminders extends Controller {
       header('Location: /reminders');
       exit;
     }
-  }
 
+    // Show the form
+    $this->view('reminders/create');
+  }
 
 
   
