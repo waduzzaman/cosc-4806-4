@@ -43,7 +43,15 @@ class Reminder {
             $stmt = $db->prepare("DELETE FROM reminders WHERE id = ?");
             return $stmt->execute([$id]);
         }
-    
+
+       // complete reminder m
+
+        public function complete_reminder($id) {
+            $db = db_connect();
+            $stmt = $db->prepare("UPDATE reminders SET completed = 1 WHERE id = ?");
+            return $stmt->execute([$id]);
+        }
+        
     
 
  
