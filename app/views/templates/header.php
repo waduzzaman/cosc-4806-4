@@ -48,6 +48,7 @@
       <ul class="menu menu-horizontal px-1">
         <li><a href="/home">Home</a></li>
         <li><a href="/home/about">About Me</a></li>
+        <li><a href="/home/reminders">Reminders</a></li>        
         <li><a href="/home/portfolio">Portfolio</a></li>
       </ul>
     </div>
