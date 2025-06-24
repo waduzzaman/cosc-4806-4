@@ -7,19 +7,30 @@ class Reminder {
     public function __construct() {
         // Optional initialization
     }
+    // get all reminders
 
-    public function get_all_reminders() {
+    public function get_reminder_by_id($id) {
         $db = db_connect();
-        $statement = $db->prepare("SELECT * FROM reminders;");
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $rows;
+        $statement = $db->prepare("SELECT * FROM reminders WHERE id = ?");
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
-    public function update_reminder($reminder_id) {
-        $db = db_connect();
-       //do updaste statement here
+        // create reminder
+    public function create_reminder($subject, $user_id) {
+            $db = db_connect();
+            $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (?, ?)");
+            return $stmt->execute([$subject, $user_id]);
     }
-    }
+
+    
+
+ 
+    
+
+
+    
+}
 
 
 ?>
+
