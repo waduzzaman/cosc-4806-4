@@ -12,15 +12,10 @@
 
     <div class="max-w-xl mx-auto bg-white shadow-md rounded-lg p-8">
       <h1 class="text-2xl  font-bold text-center text-blue-600 mb-6">
-          Welcome! <br/> Please log in to access the full site.
+         Reminders <br/> Please log in to access the full site.
       </h1>
 
 
-      <!-- Show lockout message if set -->
-        <?php if (isset($_SESSION['lockout'])) : ?>
-            <p class="text-red-600 text-center mb-4"><?= $_SESSION['lockout']; ?></p>
-            <?php unset($_SESSION['lockout']); ?>
-        <?php endif; ?>
 
       <!-- login form -->
         <form action="/login/verify" method="post" class="space-y-6">
