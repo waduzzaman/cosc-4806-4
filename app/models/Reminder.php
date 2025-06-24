@@ -29,6 +29,13 @@ class Reminder {
             $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (?, ?)");
             return $stmt->execute([$subject, $user_id]);
     }
+    
+    // udpate reminder    
+        public function update_reminder($id, $subject) {
+            $db = db_connect();
+            $stmt = $db->prepare("UPDATE reminders SET subject = ? WHERE id = ?");
+            return $stmt->execute([$subject, $id]);
+        }
 
     
 
