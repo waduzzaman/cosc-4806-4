@@ -8,6 +8,14 @@ class Reminder {
         // Optional initialization
     }
     // get all reminders
+    public function get_all_reminders() {
+        $db = db_connect();
+        $stmt = $db->prepare("SELECT * FROM reminders");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // get one reminder by id
 
     public function get_reminder_by_id($id) {
         $db = db_connect();
