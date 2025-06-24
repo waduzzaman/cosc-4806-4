@@ -24,10 +24,18 @@ class Reminder {
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
         // create reminder
+            // public function create_reminder($subject, $user_id) {
+            // $db = db_connect();
+            // $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (?,                ?)");
+            // return $stmt->execute([$subject, $user_id]);
+            // }
+
     public function create_reminder($subject, $user_id) {
-            $db = db_connect();
-            $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (?, ?)");
-            return $stmt->execute([$subject, $user_id]);
+        $db = db_connect();
+        $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (:subject, :user_id)");
+        $stmt->bindValue(':subject', $subject);
+        $stmt->bindValue(':user_id', $user_id);
+        return $stmt->execute();
     }
     
     // udpate reminder    

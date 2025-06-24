@@ -9,26 +9,43 @@ class Reminders extends Controller {
   
   // Create Reminder
   
+  // public function create() {
+  //   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  //     $subject = trim($_POST['subject']);
+  //     $user_id = $_SESSION['userid']; 
+  //     $R = $this->model('Reminder');
+  //     $R->create_reminder($subject, $user_id);
+  //     header('Location: /reminders');
+  //     exit;
+  //   }  
+  //   $this->view('reminders/create');
+  // }
+
   public function create() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $subject = trim($_POST['subject']);
       $user_id = $_SESSION['userid']; 
 
-      $R = $this->model('Reminder');
-      $R->create_reminder($subject, $user_id);
+      if (!empty($subject)) {
+          $db = db_connect();
+          $stmt = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (:subject, :user_id)");
+          $stmt->bindValue(':subject', $subject);
+          $stmt->bindValue(':user_id', $user_id);
+          $stmt->execute();
 
-      header('Location: /reminders');
-      exit;
-    }
-
-  
+          header('Location: /reminders');
+          exit;
+      }
+  }
     $this->view('reminders/create');
   }
+
+
+
 
   // udpate reminder
   public function update($id) {
     $R = $this->model('Reminder');
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $subject = trim($_POST['subject']);
       $R->update_reminder($id, $subject);
