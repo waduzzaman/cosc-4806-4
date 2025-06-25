@@ -32,6 +32,22 @@
 <!-- Toastify CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 
+<!-- Toastify JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<script>
+  <?php if (isset($_SESSION['flash_message'])): ?>
+    Toastify({
+      text: "<?= addslashes($_SESSION['flash_message']) ?>",
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      stopOnFocus: true
+    }).showToast();
+  <?php unset($_SESSION['flash_message']); endif; ?>
+</script>
+
 
 </body>
 </html>

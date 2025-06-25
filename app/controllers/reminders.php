@@ -19,6 +19,7 @@ class Reminders extends Controller {
           $stmt->bindValue(':subject', $subject);
           $stmt->bindValue(':user_id', $user_id);
           $stmt->execute();
+        $_SESSION['flash_message'] = "Reminder created!";
           header('Location: /reminders');
           exit;
       }
@@ -31,6 +32,7 @@ class Reminders extends Controller {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $subject = trim($_POST['subject']);
       $R->update_reminder($id, $subject);
+      $_SESSION['flash_message'] = "Reminder updated!";
       echo '<script>window.location.href="/reminders";</script>';   
       exit;
     }
@@ -46,6 +48,7 @@ class Reminders extends Controller {
     $R->delete_reminder($id);
     // header('Location: /reminders');
     // exit;
+     $_SESSION['flash_message'] = "Reminder Deleted!";
     echo '<script>window.location.href="/reminders";</script>';
     exit;  
   }
@@ -55,6 +58,7 @@ class Reminders extends Controller {
     $R = $this->model('Reminder');
     $R->complete_reminder($id);
     // header('Location: /reminders');
+    $_SESSION['flash_message'] = "Task completed!";
      echo '<script>window.location.href="/reminders";</script>';
     exit;
   }
