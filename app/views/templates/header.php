@@ -20,6 +20,15 @@
       <meta name="viewport" content="width=device-width">
       <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="mobile-web-app-capable" content="yes">
+
+     <!-- Add Toastify CSS -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+     <!-- End Toastify CSS -->
+    </head>
+    <body class="bg-gray-100 text-gray-900">
+
+    
   </head>
   <body class="bg-gray-100 text-gray-900">
 
