@@ -7,19 +7,6 @@ class Reminders extends Controller {
     $this->view('reminders/index',['reminders' => $list_of_reminders]);
   }
   
-  // Create Reminder
-  
-  // public function create() {
-  //   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //     $subject = trim($_POST['subject']);
-  //     $user_id = $_SESSION['userid']; 
-  //     $R = $this->model('Reminder');
-  //     $R->create_reminder($subject, $user_id);
-  //     header('Location: /reminders');
-  //     exit;
-  //   }  
-  //   $this->view('reminders/create');
-  // }
 
   public function create() {
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,23 +28,19 @@ class Reminders extends Controller {
   }
 
 
-
-
   // udpate reminder
   public function update($id) {
     $R = $this->model('Reminder');
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $subject = trim($_POST['subject']);
       $R->update_reminder($id, $subject);
-      header('Location: /reminders');
+      echo '<script>window.location.href="/reminders";</script>';   
       exit;
     }
 
     $reminder = $R->get_reminder_by_id($id);
     $this->view('reminders/update', ['reminder' => $reminder]);
   }
-
-
   
   
 }
