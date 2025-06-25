@@ -23,6 +23,13 @@ class Home extends Controller {
         $this->view('home/portfolio');
         die;
     }
+
+     // route to reminder page
+
+    public function reminder() {
+        $this->view('home/reminder');
+        die;
+    }
     // route to contact page
 
      public function contact() {
