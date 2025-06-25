@@ -14,10 +14,21 @@
     <?php if (!empty($data['reminders'])): ?>
       <?php foreach ($data['reminders'] as $reminder): ?>
         <div class="flex justify-between items-center border-b py-3">
-          <p class="text-gray-800 font-medium"><?= htmlspecialchars($reminder['subject']) ?></p>
+          <p class="text-gray-800 font-medium">
+            <?php if ($reminder['completed']): ?>
+              ✅ <span class="line-through"><?= htmlspecialchars($reminder['subject']) ?></span>
+            <?php else: ?>
+              <?= htmlspecialchars($reminder['subject']) ?>
+            <?php endif; ?>
+          </p>
           <div class="space-x-2">
+            <?php if (!$reminder['completed']): ?>
+              <a href="/reminders/complete/<?= $reminder['id'] ?>" class="text-green-600 hover:text-green-800 text-sm">Complete</a>
+            <?php else: ?>
+              <span class="text-green-600 text-sm font-semibold">Completed</span>
+            <?php endif; ?>
+
             <a href="/reminders/update/<?= $reminder['id'] ?>" class="text-blue-600 hover:text-blue-800 text-sm">Update</a>
-            <a href="/reminders/complete/<?= $reminder['id'] ?>" class="text-green-600 hover:text-green-800 text-sm">Complete</a>
             <a href="/reminders/delete/<?= $reminder['id'] ?>" 
                class="text-red-600 hover:text-red-800 text-sm" 
                onclick="return confirm('Are you sure you want to delete this reminder?')">Delete</a>

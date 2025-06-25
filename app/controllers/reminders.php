@@ -47,8 +47,16 @@ class Reminders extends Controller {
     // header('Location: /reminders');
     // exit;
     echo '<script>window.location.href="/reminders";</script>';
+    exit;  
+  }
+
+  // complete reminder
+  public function complete($id) {
+    $R = $this->model('Reminder');
+    $R->complete_reminder($id);
+    // header('Location: /reminders');
+     echo '<script>window.location.href="/reminders";</script>';
     exit;
-  
   }
 
   
